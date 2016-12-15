@@ -32,10 +32,11 @@ public class RealRoots {
   /**
    * Gets real roots from the equation :
    * a*x^2 + b*x + c = 0
+   * Returns array of roots
    * @param a - attribute for equation
    * @param b - attribute for equation
    * @param c - attribute for equation
-   * @return array of roots
+   * @return ArrayList
    * @throws DoesNotHaveRealRoots
    */
   private static ArrayList<Double> solveEquation(int a, int b, int c) throws DoesNotHaveRealRoots{
