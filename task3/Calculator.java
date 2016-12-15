@@ -9,6 +9,7 @@ public class Calculator {
 
   /**
    * Take 2 numbers from command line and performs arithmetic operations on them
+   * @param args - attributes from command line
    */
   public static void main(String[] args) {
     try {

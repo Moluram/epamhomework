@@ -10,6 +10,7 @@ public class HelloName {
   /**
    * Take NAME from command line attributes and print
    * line "Hello, NAME" to console.
+   * @param args - attributes from command line
    */
   public static void main(String[] args) {
     try {
