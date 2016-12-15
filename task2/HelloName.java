@@ -7,7 +7,7 @@ package com.moluram.task2;
  */
 public class HelloName {
   /**
-   * Take NAME from command line attributes and print
+   * Takes NAME from command line attributes and print
    * line "Hello, NAME" to console.
    * @param args - attributes from command line
    */
