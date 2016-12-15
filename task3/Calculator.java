@@ -1,14 +1,12 @@
 package com.moluram.task3;
 
-import java.util.Scanner;
-
 /**
- * Calculator which accepts from the command line 2 numbers and prints to the console their sum,
- * difference, multiplication and quotient.
+ * Class serve for calculations between two parameters.
  */
 public class Calculator {
 
-  /**All functionality are there*/
+  /** Take 2 numbers from command line and performs arithmetic operations on them
+   */
   public static void main(String[] args) {
     try {
       int x = Integer.parseInt(args[0]);

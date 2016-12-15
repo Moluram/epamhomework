@@ -1,15 +1,20 @@
 package com.moluram.task2;
 
-import java.util.Scanner;
-
 /**
- * Program which accepts name from command line and prints line "Hello, {name}"
+ * Class serve for print string "Hello, NAME",
+ * where name is taken from command line attributes.
  */
 public class HelloName {
-
-  /**Function with all functionality*/
+  /**
+   * Take NAME from command line attributes and print
+   * line "Hello, NAME" to console.
+   */
   public static void main(String[] args) {
-    String name = new Scanner(System.in).nextLine();
-    System.out.println("Hello, " + name);
+    try {
+      String name = args[0];
+      System.out.println("Hello, " + name);
+    }catch (ArrayIndexOutOfBoundsException e) {
+      System.out.println("*.class <name>");
+    }
   }
 }
