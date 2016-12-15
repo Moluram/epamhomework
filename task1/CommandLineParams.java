@@ -2,6 +2,8 @@ package com.moluram.task1;
 
 /**
  *Class prints all command line attributes in reverse order.
+ * @author Moluram
+ * @version 1.0
  */
 public class CommandLineParams {
 

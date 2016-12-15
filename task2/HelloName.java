@@ -3,6 +3,8 @@ package com.moluram.task2;
 /**
  * Class serve for print string "Hello, NAME",
  * where name is taken from command line attributes.
+ * @author Moluram
+ * @version 1.0
  */
 public class HelloName {
   /**

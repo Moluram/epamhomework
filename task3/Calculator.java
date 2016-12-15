@@ -2,10 +2,13 @@ package com.moluram.task3;
 
 /**
  * Class serve for calculations between two parameters.
+ * @author Moluram
+ * @version 1.0
  */
 public class Calculator {
 
-  /** Take 2 numbers from command line and performs arithmetic operations on them
+  /**
+   * Take 2 numbers from command line and performs arithmetic operations on them
    */
   public static void main(String[] args) {
     try {
