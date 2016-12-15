@@ -22,7 +22,7 @@ public class Calculator {
     }catch (ArrayIndexOutOfBoundsException e){
       System.out.println("*.class <1st number> <2nd number>");
     }catch (NumberFormatException e){
-      System.out.println("The number should costate only of digits");
+      System.out.println("The number must consist only of digits");
     }
   }
 }
