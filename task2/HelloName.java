@@ -1,5 +1,4 @@
 package com.moluram.task2;
-
 /**
  * Class serve for print string "Hello, NAME",
  * where name is taken from command line attributes.
