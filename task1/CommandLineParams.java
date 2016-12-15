@@ -1,4 +1,4 @@
-package com.moluram.tasks13;
+package com.moluram.task1;
 
 public class CommandLineParams {
 

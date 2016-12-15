@@ -1,4 +1,4 @@
-package com.moluram.tasks13;
+package com.moluram.task3;
 
 import java.util.Scanner;
 
