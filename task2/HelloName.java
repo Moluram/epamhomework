@@ -8,9 +8,9 @@ package com.moluram.task2;
  */
 public class HelloName {
   /**
-   * Takes NAME from command line attributes and print
+   * Takes NAME from command line arguments and print
    * line "Hello, NAME" to console.
-   * @param args - attributes from command line
+   * @param args - arguments from command line
    */
   public static void main(String[] args) {
     try {
