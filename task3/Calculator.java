@@ -25,9 +25,15 @@ public class Calculator {
     }
   }
 
-  private static Double parseDoubleWithDefault(String s, double def) {
+  /**
+   * Return Double equivalent of the given line.
+   * @param value - number in string form
+   * @param def - default value comes into if exception will be thrown
+   * @return Double
+   */
+  private static Double parseDoubleWithDefault(String value, double def) {
     try {
-      return Double.parseDouble(s);
+      return Double.parseDouble(value);
     } catch (NumberFormatException e) {
       return def;
     }
