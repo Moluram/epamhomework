@@ -9,8 +9,8 @@ import java.util.ArrayList;
  */
 public class RealRoots {
    /**
-   * Takes 3 parameters from command line and calls for roots of the equation
-   * @param args - attributes from command line
+   * Takes 3 parameters as arguments from command line and calls for roots of the equation
+   * @param args - arguments from command line
    */
   public static void main(String[] args) {
     try {
@@ -20,11 +20,11 @@ public class RealRoots {
       for (Double value : solveEquation(a,b,c)) {
         print(value.toString());
       }
-    }catch (ArrayIndexOutOfBoundsException e){
+    } catch (ArrayIndexOutOfBoundsException e){
       print("*.class <a> <b> <c>");
-    }catch (NumberFormatException e){
+    } catch (NumberFormatException e){
       print("The number must consist only of digits");
-    }catch (DoesNotHaveRealRoots e){
+    } catch (DoesNotHaveRealRoots e){
       print("Equation doesn't have real roots");
     }
   }
@@ -37,7 +37,7 @@ public class RealRoots {
    * @param b - attribute for equation
    * @param c - attribute for equation
    * @return ArrayList
-   * @throws DoesNotHaveRealRoots
+   * @throws DoesNotHaveRealRoots if equation does not have real roots
    */
   private static ArrayList<Double> solveEquation(int a, int b, int c) throws DoesNotHaveRealRoots{
     double D = b*b - 4 * a * c;
