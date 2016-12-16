@@ -26,9 +26,10 @@ public class Calculator {
   }
 
   /**
-   * Return Double equivalent of the given line.
+   * Return Double equivalent of the given line. Default value comes into if exception will be
+   * thrown.
    * @param value - number in string form
-   * @param def - default value comes into if exception will be thrown
+   * @param def - default value 
    * @return Double
    */
   private static Double parseDoubleWithDefault(String value, double def) {
