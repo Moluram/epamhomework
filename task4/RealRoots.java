@@ -14,14 +14,14 @@ public class RealRoots {
    */
   public static void main(String[] args) {
     try {
-      int a = Integer.parseInt(args[0]);
-      int b = Integer.parseInt(args[1]);
-      int c = Integer.parseInt(args[2]);
+      double a = parseDoubleWithDefault(args[0], 0);
+      double b = parseDoubleWithDefault(args[1], 0);
+      double c = parseDoubleWithDefault(args[2], 0);
       for (Double value : solveEquation(a,b,c)) {
         print(value.toString());
       }
     } catch (ArrayIndexOutOfBoundsException e){
-      print("*.class <a> <b> <c>");
+      print("You must enter 3 parameters of the equation as arguments of the command line");
     } catch (NumberFormatException e){
       print("The number must consist only of digits");
     } catch (DoesNotHaveRealRoots e){
@@ -33,13 +33,14 @@ public class RealRoots {
    * Gets real roots from the equation :
    * a*x^2 + b*x + c = 0
    * Returns array of roots
-   * @param a - attribute for equation
-   * @param b - attribute for equation
-   * @param c - attribute for equation
+   * @param a - parameter for equation
+   * @param b - parameter for equation
+   * @param c - parameter for equation
    * @return ArrayList
    * @throws DoesNotHaveRealRoots if equation does not have real roots
    */
-  private static ArrayList<Double> solveEquation(int a, int b, int c) throws DoesNotHaveRealRoots{
+  private static ArrayList<Double> solveEquation(double a, double b, double c) throws
+          DoesNotHaveRealRoots{
     double D = b*b - 4 * a * c;
     double x1;
     double x2;
@@ -49,10 +50,24 @@ public class RealRoots {
       x1 = ((-1 * b) + Math.sqrt(D)) / (2 * a);
       x2 = ((-1 * b) - Math.sqrt(D)) / (2 * a);
     }
-    ArrayList<Double> list = new ArrayList<Double>();
+    ArrayList<Double> list = new ArrayList<>();
     list.add(x1);
     list.add(x2);
     return list;
+  }
+
+  /**
+   * Return Double equivalent of the given line.
+   * @param value - number in string form
+   * @param def - default value comes into if exception will be thrown
+   * @return Double
+   */
+  private static Double parseDoubleWithDefault(String value, double def) {
+    try {
+      return Double.parseDouble(value);
+    } catch (NumberFormatException e) {
+      return def;
+    }
   }
 
   /**
