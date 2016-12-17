@@ -18,15 +18,15 @@ public class RealRoots {
       BigDecimal a = new BigDecimal(args[0]);
       BigDecimal b = new BigDecimal(args[1]);
       BigDecimal c = new BigDecimal(args[2]);
-      for (BigDecimal value : solveEquation(a,b,c)) {
+      for (BigDecimal value : solveEquation(a, b, c)) {
         print(value.toString());
       }
-    } catch (ArrayIndexOutOfBoundsException e){
-      print("You must enter 3 parameters of the equation as arguments of the command line");
-    } catch (NumberFormatException e){
-      print("The number must consist only of digits");
-    } catch (DoesNotHaveRealRoots e){
+    } catch (DoesNotHaveRealRoots e) {
       print("Equation doesn't have real roots");
+    } catch (ArrayIndexOutOfBoundsException e) {
+      print("You must enter 3 parameters of the equation as arguments of the command line");
+    } catch (NumberFormatException e) {
+      print("The number must consist only of digits");
     }
   }
 

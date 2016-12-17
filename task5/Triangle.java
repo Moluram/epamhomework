@@ -34,11 +34,11 @@ public class Triangle {
    * @param c - length of triangle side
    * @return String
    */
-  private static String whatIsThisTriangle(BigDecimal a, BigDecimal b, BigDecimal c){
+  private static String whatIsThisTriangle(BigDecimal a, BigDecimal b, BigDecimal c) {
     if ((a.compareTo(b) == 0) && (b.compareTo(c) == 0)) {
       return "Equilateral";
     }
-    if ((a.compareTo(b) == 0) || (a.compareTo(c) == 0) || (b.compareTo(c) == 0)){
+    if ((a.compareTo(b) == 0) || (a.compareTo(c) == 0) || (b.compareTo(c) == 0)) {
       return "Isosceles";
     }
     return "Normal";
