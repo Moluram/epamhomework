@@ -40,12 +40,12 @@ public class RealRoots {
    * @return ArrayList
    * @throws DoesNotHaveRealRoots if equation does not have real roots
    */
-  private static ArrayList<BigDecimal> solveEquation(BigDecimal a, BigDecimal b, BigDecimal c) throws
-          DoesNotHaveRealRoots{
+  private static ArrayList<BigDecimal> solveEquation(BigDecimal a, BigDecimal b, BigDecimal c)
+          throws DoesNotHaveRealRoots{
     BigDecimal D = b.pow(2).subtract(a.multiply(new BigDecimal("4")).multiply(c));
     BigDecimal x1;
     BigDecimal x2;
-    if(D.doubleValue() < 0){
+    if (D.doubleValue() < 0) {
       throw  new DoesNotHaveRealRoots();
     } else {
       x1 =  b.negate()

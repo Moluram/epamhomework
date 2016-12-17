@@ -39,7 +39,7 @@ class BigDecimalSqrt {
    * @author Luciano Culacciatti
    * @url http://www.codeproject.com/Tips/257031/Implementing-SqrtRoot-in-BigDecimal
    */
-  public static BigDecimal bigSqrt(BigDecimal value){
+  static BigDecimal bigSqrt(BigDecimal value){
     return sqrtNewtonRaphson(value,new BigDecimal(1),new BigDecimal(1).divide(SQRT_PRE));
   }
 }
