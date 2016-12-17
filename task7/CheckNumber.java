@@ -1,23 +1,32 @@
 package com.moluram.task7;
 
+import com.moluram.task7.checker.CheckLine;
+
 import java.util.Scanner;
 
 /**
- * Created by Moluram on 16.12.2016.
+ * Class serve to check line from user input on various test
+ * @author Moluram
+ * @version 1.0
  */
 public class CheckNumber {
+  /**
+   * Takes line from user input and send it to various tests
+   * @param args - arguments from command line
+   */
   public static void main(String[] args) {
     String line = new Scanner(System.in).nextLine().replace(","," ");
-    if (ContainMoreThan5Words.check(line)) {
+    CheckLine checkLine = new CheckLine();
+    if (checkLine.forContainMoreThan5Words(line)) {
       print("Contains more than 5 words");
     }
-    if (ContainOnlyDigitals.check(line)) {
+    if (checkLine.forContainOnlyDigits(line)) {
       print("Contain only digits");
     }
-    if (ContainWordFromDictionary.check(line)) {
+    if (checkLine.forContainWordFromDictionary(line)) {
       print("Contain word from dictionary");
     }
-    if (DoNotContainDigitals.check(line)) {
+    if (checkLine.forDoNotContainDigits(line)) {
       print("Do not contain digits");
     }
   }

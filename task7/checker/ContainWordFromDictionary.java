@@ -1,4 +1,4 @@
-package com.moluram.task7;
+package com.moluram.task7.checker;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,11 +9,20 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by Moluram on 16.12.2016.
+ * Class serves for determine is sent line contain word from dictionary
+ * @author Moluram
+ * @version 1.0
  */
-final class ContainWordFromDictionary {
-  private static List<String> dictionary = new LinkedList<>();
-  static {
+class ContainWordFromDictionary implements Checker{
+  /**
+   * Contain all dictionary words
+   */
+  private List<String> dictionary = new LinkedList<>();
+
+  /**
+   * Initializes dictionary list from file
+   */
+  ContainWordFromDictionary() {
     String inputFile = "src/com/moluram/task7/dictionary.txt";
     File fileI = new File(inputFile);
     try {
@@ -29,8 +38,7 @@ final class ContainWordFromDictionary {
     }
   }
 
-
-  static boolean check(String line) {
+  public boolean check(String line) {
     String[] words = line.split(" ");
     for (String word: words) {
         if (word.length() != 0 && checkWordInDictionary(word)) {
@@ -40,7 +48,7 @@ final class ContainWordFromDictionary {
     return false;
   }
 
-  private static boolean checkWordInDictionary(String fakeWord) {
+  private boolean checkWordInDictionary(String fakeWord) {
     for (String word: dictionary) {
       if (fakeWord.equals(word)) {
         return true;
