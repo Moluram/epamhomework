@@ -1,5 +1,6 @@
 package com.moluram.task4;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 /**
@@ -8,16 +9,16 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class RealRoots {
-   /**
+  /**
    * Takes 3 parameters as arguments from command line and calls for roots of the equation
    * @param args - arguments from command line
    */
   public static void main(String[] args) {
     try {
-      double a = parseDoubleWithDefault(args[0], 0);
-      double b = parseDoubleWithDefault(args[1], 0);
-      double c = parseDoubleWithDefault(args[2], 0);
-      for (Double value : solveEquation(a,b,c)) {
+      BigDecimal a = new BigDecimal(args[0]);
+      BigDecimal b = new BigDecimal(args[1]);
+      BigDecimal c = new BigDecimal(args[2]);
+      for (BigDecimal value : solveEquation(a,b,c)) {
         print(value.toString());
       }
     } catch (ArrayIndexOutOfBoundsException e){
@@ -39,35 +40,25 @@ public class RealRoots {
    * @return ArrayList
    * @throws DoesNotHaveRealRoots if equation does not have real roots
    */
-  private static ArrayList<Double> solveEquation(double a, double b, double c) throws
+  private static ArrayList<BigDecimal> solveEquation(BigDecimal a, BigDecimal b, BigDecimal c) throws
           DoesNotHaveRealRoots{
-    double D = b*b - 4 * a * c;
-    double x1;
-    double x2;
-    if(D < 0){
+    BigDecimal D = b.pow(2).subtract(a.multiply(new BigDecimal("4")).multiply(c));
+    BigDecimal x1;
+    BigDecimal x2;
+    if(D.doubleValue() < 0){
       throw  new DoesNotHaveRealRoots();
     } else {
-      x1 = ((-1 * b) + Math.sqrt(D)) / (2 * a);
-      x2 = ((-1 * b) - Math.sqrt(D)) / (2 * a);
+      x1 =  b.negate()
+              .add(BigDecimalSqrt.bigSqrt(D))
+              .divide(a.multiply(new BigDecimal("2")), 15, BigDecimal.ROUND_HALF_UP);
+      x2 = b.negate()
+              .subtract(BigDecimalSqrt.bigSqrt(D))
+              .divide(a.multiply(new BigDecimal("2")), 15, BigDecimal.ROUND_HALF_UP);
     }
-    ArrayList<Double> list = new ArrayList<>();
+    ArrayList<BigDecimal> list = new ArrayList<>();
     list.add(x1);
     list.add(x2);
     return list;
-  }
-
-  /**
-   * Return Double equivalent of the given line.
-   * @param value - number in string form
-   * @param def - default value comes into if exception will be thrown
-   * @return Double
-   */
-  private static Double parseDoubleWithDefault(String value, double def) {
-    try {
-      return Double.parseDouble(value);
-    } catch (NumberFormatException e) {
-      return def;
-    }
   }
 
   /**
