@@ -1,5 +1,6 @@
 package com.moluram.task3;
 
+import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,49 +16,31 @@ public class Calculator {
    */
   public static void main(String[] args) {
     try {
-      if (!(isConsistOfDigits(args[0]) &
-        isConsistOfDigits(args[1]))){
-        System.out.println("The number must consist only of digits");
-      } else {
-        Double x = parseDoubleWithDefault(args[0], 0);
-        Double y = parseDoubleWithDefault(args[1], 0);
-        System.out.println(x + " + " + y + " = " + (x + y));
-        System.out.println(x + " - " + y + " = " + (x - y));
-        System.out.println(x + " * " + y + " = " + (x * y));
-        System.out.println(x + " / " + y + " = " + (x / y));
-      }
+      isConsistOfDigits(args[0]);
+      isConsistOfDigits(args[1]);
+      BigDecimal x = new BigDecimal(args[0]);
+      BigDecimal y = new BigDecimal(args[1]);
+      System.out.println(x + " + " + y + " = " + (x.add(y)));
+      System.out.println(x + " - " + y + " = " + (x.subtract(y)));
+      System.out.println(x + " * " + y + " = " + (x.multiply(y)));
+      System.out.println(x + " / " + y + " = " + (x.divide(y, 17, BigDecimal.ROUND_HALF_UP)));
     } catch (ArrayIndexOutOfBoundsException e){
       System.out.println("You need to enter two numbers as arguments of the command line");
+    } catch (NumberFormatException e){
+      System.out.println("The numbers must consist only of digits");
     }
   }
 
   /**
    * Checks whether the argument contains characters other than numbers.
    * @param arg - argument for check
-   * @return boolean
    */
-  private static boolean isConsistOfDigits(String arg) {
+  private static void isConsistOfDigits(String arg) {
     String pattern = "[^0-9]\\s";
     Pattern p = Pattern.compile(pattern);
     Matcher m = p.matcher(arg);
     if(m.find()){
-      return false;
-    }
-    return true;
-  }
-
-  /**
-   * Returns Double equivalent of the given line. Default value comes into if exception will be
-   * thrown.
-   * @param value - number in string form
-   * @param def - default value
-   * @return Double
-   */
-  private static Double parseDoubleWithDefault(String value, double def) {
-    try {
-      return Double.parseDouble(value);
-    } catch (NumberFormatException e) {
-      return def;
+      throw new NumberFormatException();
     }
   }
 }
