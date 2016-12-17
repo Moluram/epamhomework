@@ -15,8 +15,8 @@ public class Calculator {
    */
   public static void main(String[] args) {
     try {
-      if (isConsistOfDigits(args[0]) &
-        isConsistOfDigits(args[1])){
+      if (!(isConsistOfDigits(args[0]) &
+        isConsistOfDigits(args[1]))){
         System.out.println("The number must consist only of digits");
       } else {
         Double x = parseDoubleWithDefault(args[0], 0);
