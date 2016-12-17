@@ -1,5 +1,7 @@
 package com.moluram.task5;
 
+import java.math.BigDecimal;
+
 /**
  * Serves for determining the type of triangle
  * @author Moluram
@@ -13,9 +15,9 @@ public class Triangle {
    */
   public static void main(String[] args) {
     try {
-      double a = parseDoubleWithDefault(args[0], 0);
-      double b = parseDoubleWithDefault(args[1], 0);
-      double c = parseDoubleWithDefault(args[2], 0);
+      BigDecimal a = new BigDecimal(args[0]);
+      BigDecimal b = new BigDecimal(args[1]);
+      BigDecimal c = new BigDecimal(args[2]);
       print(whatIsThisTriangle(a,b,c));
     } catch (ArrayIndexOutOfBoundsException e) {
       print("You must enter 3 lengths of the triangle as arguments of the command line");
@@ -32,28 +34,14 @@ public class Triangle {
    * @param c - length of triangle side
    * @return String
    */
-  private static String whatIsThisTriangle(double a, double b, double c){
-    if(a == b && b == c) {
+  private static String whatIsThisTriangle(BigDecimal a, BigDecimal b, BigDecimal c){
+    if ((a.compareTo(b) == 0) && (b.compareTo(c) == 0)) {
       return "Equilateral";
     }
-    if((a == b) || (b == c) || (a == c)){
+    if ((a.compareTo(b) == 0) || (a.compareTo(c) == 0) || (b.compareTo(c) == 0)){
       return "Isosceles";
     }
     return "Normal";
-  }
-
-  /**
-   * Return Double equivalent of the given line.
-   * @param value - number in string form
-   * @param def - default value comes into if exception will be thrown
-   * @return Double
-   */
-  private static Double parseDoubleWithDefault(String value, double def) {
-    try {
-      return Double.parseDouble(value);
-    } catch (NumberFormatException e) {
-      return def;
-    }
   }
 
   /**
