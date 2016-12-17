@@ -4,16 +4,13 @@ import java.util.regex.*;
 /**
  * Created by Moluram on 16.12.2016.
  */
-public final class ContainOnlyDigitals {
+final class ContainOnlyDigitals {
   private ContainOnlyDigitals(){}
 
-  public static boolean check(String line){
-    String pattern = "[^0-9]\\s";
+  static boolean check(String line){
+    String pattern = "[^0-9]";
     Pattern p = Pattern.compile(pattern);
-    Matcher m = p.matcher(line);
-    if(m.find()){
-      return false;
-    }
-    return true;
+    Matcher m = p.matcher(line.replace(" ", ""));
+    return !m.find();
   }
 }
