@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
  * @version 1.0
  */
 public class Calculator {
+  private static final int SCALE = 20;
   /**
    * Takes 2 numbers from command line and performs arithmetic operations on them
    * @param args - arguments from command line
@@ -23,10 +24,10 @@ public class Calculator {
       System.out.println(x + " + " + y + " = " + (x.add(y)));
       System.out.println(x + " - " + y + " = " + (x.subtract(y)));
       System.out.println(x + " * " + y + " = " + (x.multiply(y)));
-      System.out.println(x + " / " + y + " = " + (x.divide(y, 17, BigDecimal.ROUND_HALF_UP)));
-    } catch (ArrayIndexOutOfBoundsException e){
+      System.out.println(x + " / " + y + " = " + (x.divide(y, SCALE, BigDecimal.ROUND_HALF_UP)));
+    } catch (ArrayIndexOutOfBoundsException e) {
       System.out.println("You need to enter two numbers as arguments of the command line");
-    } catch (NumberFormatException e){
+    } catch (NumberFormatException e) {
       System.out.println("The numbers must consist only of digits");
     }
   }
@@ -39,7 +40,7 @@ public class Calculator {
     String pattern = "[^0-9]\\s";
     Pattern p = Pattern.compile(pattern);
     Matcher m = p.matcher(arg);
-    if (m.find()){
+    if (m.find()) {
       throw new NumberFormatException();
     }
   }
