@@ -13,7 +13,7 @@ import java.util.List;
  * @author Moluram
  * @version 1.0
  */
-class ContainWordFromDictionary implements Checker{
+class ContainWordFromDictionary implements Checker {
   /**
    * Contain all dictionary words
    */

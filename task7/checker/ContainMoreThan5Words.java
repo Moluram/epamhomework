@@ -6,14 +6,14 @@ package com.moluram.task7.checker;
  * @author Moluram
  * @version 1.0
  */
-class ContainMoreThan5Words implements Checker{
+class ContainMoreThan5Words implements Checker {
   /**
    * Checks whether the given string contain more than five words
    * Return answer
    * @param line - line for check
    * @return boolean
    */
-  public boolean check(String line){
+  public boolean check(String line) {
     String[] words = line.split(" ");
     int counter = 0;
     for (String word: words) {
