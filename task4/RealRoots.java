@@ -18,8 +18,9 @@ public class RealRoots {
       BigDecimal a = new BigDecimal(args[0]);
       BigDecimal b = new BigDecimal(args[1]);
       BigDecimal c = new BigDecimal(args[2]);
+      int counter = 1;
       for (BigDecimal value : solveEquation(a, b, c)) {
-        print(value.toString());
+        print("x" + counter++ + " : " + value.toString());
       }
     } catch (DoesNotHaveRealRoots e) {
       print("Equation doesn't have real roots");
