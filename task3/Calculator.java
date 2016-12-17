@@ -39,7 +39,7 @@ public class Calculator {
     String pattern = "[^0-9]\\s";
     Pattern p = Pattern.compile(pattern);
     Matcher m = p.matcher(arg);
-    if(m.find()){
+    if (m.find()){
       throw new NumberFormatException();
     }
   }
