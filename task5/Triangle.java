@@ -39,7 +39,7 @@ public class Triangle {
    */
   private static void testTriangle(BigDecimal a, BigDecimal b, BigDecimal c)
           throws TriangleDoesNotExist {
-    if(a.compareTo(b.add(c)) != -1 || b.compareTo(a.add(c)) != -1 || c.compareTo(a.add(b)) != -1) {
+    if (a.compareTo(b.add(c)) != -1 || b.compareTo(a.add(c)) != -1 || c.compareTo(a.add(b)) != -1) {
       throw new TriangleDoesNotExist();
     }
   }
