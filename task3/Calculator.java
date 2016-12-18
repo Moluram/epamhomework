@@ -10,7 +10,6 @@ import java.util.regex.Pattern;
  * @version 1.0
  */
 public class Calculator {
-  private static final int SCALE = 20;
   /**
    * Takes 2 numbers from command line and performs arithmetic operations on them
    * @param args - arguments from command line
@@ -31,6 +30,11 @@ public class Calculator {
       System.out.println("The numbers must consist only of digits");
     }
   }
+
+  /**
+   * Scale of the quotient to be returned after dividing.
+   */
+  private static final int SCALE = 20;
 
   /**
    * Checks whether the argument contains characters other than numbers.
