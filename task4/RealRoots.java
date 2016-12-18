@@ -42,18 +42,19 @@ public class RealRoots {
    * @throws DoesNotHaveRealRoots if equation does not have real roots
    */
   private static ArrayList<BigDecimal> solveEquation(BigDecimal a, BigDecimal b, BigDecimal c)
-          throws DoesNotHaveRealRoots{
-    BigDecimal D = b.pow(2).subtract(a.multiply(new BigDecimal("4")).multiply(c));
+          throws DoesNotHaveRealRoots {
+    BigDecimalSqrt D = (BigDecimalSqrt)
+            b.pow(2).subtract(a.multiply(new BigDecimal("4")).multiply(c));
     BigDecimal x1;
     BigDecimal x2;
     if (D.doubleValue() < 0) {
       throw  new DoesNotHaveRealRoots();
     } else {
       x1 =  b.negate()
-              .add(BigDecimalSqrt.bigSqrt(D))
+              .add(D.sqrtValue())
               .divide(a.multiply(new BigDecimal("2")), 15, BigDecimal.ROUND_HALF_UP);
       x2 = b.negate()
-              .subtract(BigDecimalSqrt.bigSqrt(D))
+              .subtract(D.sqrtValue())
               .divide(a.multiply(new BigDecimal("2")), 15, BigDecimal.ROUND_HALF_UP);
     }
     ArrayList<BigDecimal> list = new ArrayList<>();
@@ -66,12 +67,12 @@ public class RealRoots {
    * Prints to the console value
    * @param value - printed value
    */
-  private static void print(String value){
+  private static void print(String value) {
     System.out.println(value);
   }
 
   /**
    * Throws when equation doesn't have real roots
    */
-  private static class DoesNotHaveRealRoots extends Exception{}
+  private static class DoesNotHaveRealRoots extends Exception {}
 }
