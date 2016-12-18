@@ -35,7 +35,7 @@ public class CheckNumber {
    * Prints to the console value
    * @param value - printed value
    */
-  private static void print(String value){
+  private static void print(String value) {
     System.out.println(value);
   }
 }
