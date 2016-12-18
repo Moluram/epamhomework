@@ -14,6 +14,14 @@ class BigDecimalSqrt extends BigDecimal {
   private static final BigDecimal SQRT_PRE = new BigDecimal(10).pow(SQRT_DIG.intValue());
 
   /**
+   * Create new BigDecimalSqrt from existing BigDecimal
+   * @param value - value to copy
+   */
+  public BigDecimalSqrt(BigDecimal value) {
+    super(value.toString());
+  }
+
+  /**
    * Uses Newton Raphson to compute the square root of a BigDecimal.
    * @author Luciano Culacciatti
    * @url http://www.codeproject.com/Tips/257031/Implementing-SqrtRoot-in-BigDecimal

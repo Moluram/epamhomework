@@ -43,8 +43,8 @@ public class RealRoots {
    */
   private static ArrayList<BigDecimal> solveEquation(BigDecimal a, BigDecimal b, BigDecimal c)
           throws DoesNotHaveRealRoots {
-    BigDecimalSqrt D = (BigDecimalSqrt)
-            b.pow(2).subtract(a.multiply(new BigDecimal("4")).multiply(c));
+    BigDecimalSqrt D = new BigDecimalSqrt(
+            b.pow(2).subtract(a.multiply(new BigDecimal("4")).multiply(c)));
     BigDecimal x1;
     BigDecimal x2;
     if (D.doubleValue() < 0) {
