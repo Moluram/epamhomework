@@ -4,10 +4,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by Moluram on 16.12.2016.
+ * Class serves for determine is sent line contain digits
+ * @author Moluram
+ * @version 1.0
  */
-class DoNotContainDigits implements Checker{
-
+class DoNotContainDigits implements Checker {
+  /**
+   * Checks whether the given line contain digits
+   * Return result of check
+   * @param line - checked line
+   * @return boolean
+   */
   public boolean check(String line) {
     String pattern = "[0-9]";
     Pattern p = Pattern.compile(pattern);

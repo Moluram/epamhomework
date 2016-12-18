@@ -38,6 +38,12 @@ class ContainWordFromDictionary implements Checker {
     }
   }
 
+  /**
+   * Checks whether the given line contain word from dictionary
+   * Return result of check
+   * @param line - checked line
+   * @return boolean
+   */
   public boolean check(String line) {
     String[] words = line.split(" ");
     for (String word: words) {
@@ -48,6 +54,12 @@ class ContainWordFromDictionary implements Checker {
     return false;
   }
 
+  /**
+   * Inner func for check explicit word in dictionary
+   * Return result of check
+   * @param fakeWord - word for check
+   * @return boolean
+   */
   private boolean checkWordInDictionary(String fakeWord) {
     for (String word: dictionary) {
       if (fakeWord.equals(word)) {

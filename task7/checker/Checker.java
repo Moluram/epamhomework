@@ -1,8 +1,14 @@
 package com.moluram.task7.checker;
 
 /**
- * Created by Moluram on 17.12.2016.
+ * Interfaces for classes which wants to check string line
  */
-public interface Checker {
+interface Checker {
+  /**
+   * Main function for checkers
+   * Return result of check
+   * @param line - checked line
+   * @return boolean
+   */
   boolean check(String line);
 }
