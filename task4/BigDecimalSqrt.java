@@ -10,9 +10,6 @@ import java.math.MathContext;
  * @version 1.0
  */
 class BigDecimalSqrt extends BigDecimal {
-  private static final BigDecimal SQRT_DIG = new BigDecimal(150);
-  private static final BigDecimal SQRT_PRE = new BigDecimal(10).pow(SQRT_DIG.intValue());
-
   /**
    * Create new BigDecimalSqrt from existing BigDecimal
    * @param value - value to copy
@@ -29,6 +26,12 @@ class BigDecimalSqrt extends BigDecimal {
   public BigDecimal sqrtValue() {
     return sqrtNewtonRaphson(this ,new BigDecimal(1),new BigDecimal(1).divide(SQRT_PRE));
   }
+
+  /**
+   * Specifies the number of digits.
+   */
+  private static final BigDecimal SQRT_DIG = new BigDecimal(150);
+  private static final BigDecimal SQRT_PRE = new BigDecimal(10).pow(SQRT_DIG.intValue());
 
   /**
    * Private utility method used to compute the square root of a BigDecimal.

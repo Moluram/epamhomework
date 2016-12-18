@@ -9,22 +9,6 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class RealRoots {
-  private static int SCALE = 15;
-
-  /**
-   * Used for calculating D:
-   *           ' - our number
-   * D = B^2 - 4 * a * c;
-   */
-  private static String PARAM_FOR_CALCULATING_D = "4";
-
-  /**
-   * Used for calculating roots:
-   *                            ' - our number
-   * x = (-b -+ D^(1/2)) / (a * 2)
-   */
-  private static String PARAM_FOR_CALCULATING_X = "2";
-
   /**
    * Takes 3 parameters as arguments from command line and calls for roots of the equation
    * @param args - arguments from command line
@@ -46,6 +30,26 @@ public class RealRoots {
       print("The number must consist only of digits");
     }
   }
+
+  /**
+   * Scale of the quotient to be returned after dividing.
+   */
+  private static final int SCALE = 20;
+
+  /**
+   * Used for calculating D:
+   *           ' - our number
+   * D = B^2 - 4 * a * c;
+   */
+  private static String PARAM_FOR_CALCULATING_D = "4";
+
+  /**
+   * Used for calculating roots:
+   *                            ' - our number
+   * x = (-b -+ D^(1/2)) / (a * 2)
+   */
+  private static String PARAM_FOR_CALCULATING_X = "2";
+
 
   /**
    * Gets real roots from the equation :
