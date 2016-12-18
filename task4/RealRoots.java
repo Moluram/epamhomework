@@ -9,6 +9,22 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class RealRoots {
+  private static int SCALE = 15;
+
+  /**
+   * Used for calculating D:
+   *           ' - our number
+   * D = B^2 - 4 * a * c;
+   */
+  private static String PARAM_FOR_CALCULATING_D = "4";
+
+  /**
+   * Used for calculating roots:
+   *                            ' - our number
+   * x = (-b -+ D^(1/2)) / (a * 2)
+   */
+  private static String PARAM_FOR_CALCULATING_X = "2";
+
   /**
    * Takes 3 parameters as arguments from command line and calls for roots of the equation
    * @param args - arguments from command line
@@ -44,7 +60,7 @@ public class RealRoots {
   private static ArrayList<BigDecimal> solveEquation(BigDecimal a, BigDecimal b, BigDecimal c)
           throws DoesNotHaveRealRoots {
     BigDecimalSqrt D = new BigDecimalSqrt(
-            b.pow(2).subtract(a.multiply(new BigDecimal("4")).multiply(c)));
+            b.pow(2).subtract(a.multiply(new BigDecimal(PARAM_FOR_CALCULATING_D)).multiply(c)));
     BigDecimal x1;
     BigDecimal x2;
     if (D.doubleValue() < 0) {
@@ -52,10 +68,12 @@ public class RealRoots {
     } else {
       x1 =  b.negate()
               .add(D.sqrtValue())
-              .divide(a.multiply(new BigDecimal("2")), 15, BigDecimal.ROUND_HALF_UP);
+              .divide(a.multiply(new BigDecimal(PARAM_FOR_CALCULATING_X)),
+                                  SCALE, BigDecimal.ROUND_HALF_UP);
       x2 = b.negate()
               .subtract(D.sqrtValue())
-              .divide(a.multiply(new BigDecimal("2")), 15, BigDecimal.ROUND_HALF_UP);
+              .divide(a.multiply(new BigDecimal(PARAM_FOR_CALCULATING_X)),
+                                  SCALE, BigDecimal.ROUND_HALF_UP);
     }
     ArrayList<BigDecimal> list = new ArrayList<>();
     list.add(x1);
