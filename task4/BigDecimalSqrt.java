@@ -3,6 +3,7 @@ package com.moluram.task4;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
+import java.math.RoundingMode;
 
 /**
  * Class serve for calculation square root from BigDecimal number
@@ -11,45 +12,40 @@ import java.math.MathContext;
  */
 class BigDecimalSqrt extends BigDecimal {
   /**
-   * Create new BigDecimalSqrt from existing BigDecimal
-   * @param value - value to copy
+   * Specifies the accuracy of calculations.
    */
-  public BigDecimalSqrt(BigDecimal value) {
-    super(value.toString());
+  private static final BigDecimal SQRT_DIG = new BigDecimal(150);
+  private static final BigDecimal SQRT_PRECISION = new BigDecimal(10).pow(SQRT_DIG.intValue());
+
+  private static int BIG_DECIMAL_COMPARE_VALUE_FOR_LESS = -1;
+  private static BigDecimal BIG_DECIMAL_FOR_DIVISION = new BigDecimal("2");
+
+  public BigDecimalSqrt(BigDecimal decimal) {
+    super(decimal.byteValue());
   }
 
   /**
    * Uses Newton Raphson to compute the square root of a BigDecimal.
-   * @author Luciano Culacciatti
-   * @url http://www.codeproject.com/Tips/257031/Implementing-SqrtRoot-in-BigDecimal
    */
   public BigDecimal sqrtValue() {
-    return sqrtNewtonRaphson(this ,new BigDecimal(1),new BigDecimal(1).divide(SQRT_PRE));
+    return sqrtNewtonRaphson(this, new BigDecimal(1).divide(SQRT_PRECISION));
   }
 
   /**
-   * Specifies the number of digits.
-   */
-  private static final BigDecimal SQRT_DIG = new BigDecimal(150);
-  private static final BigDecimal SQRT_PRE = new BigDecimal(10).pow(SQRT_DIG.intValue());
-
-  /**
    * Private utility method used to compute the square root of a BigDecimal.
-   * @param c - value for evolution
-   * @author Luciano Culacciatti
-   * @url http://www.codeproject.com/Tips/257031/Implementing-SqrtRoot-in-BigDecimal
+   * @param n - value for evolution
+   * @param precision - the accuracy of calculations
+   * @author Moluram
    */
-  private static BigDecimal sqrtNewtonRaphson  (BigDecimal c, BigDecimal xn, BigDecimal precision) {
-    BigDecimal fx = xn.pow(2).add(c.negate());
-    BigDecimal fpx = xn.multiply(new BigDecimal(2));
-    BigDecimal xn1 = fx.divide(fpx, 2 * SQRT_DIG.intValue(), BigDecimal.ROUND_HALF_DOWN);
-    xn1 = xn.add(xn1.negate());
-    BigDecimal currentSquare = xn1.pow(2);
-    BigDecimal currentPrecision = currentSquare.subtract(c);
-    currentPrecision = currentPrecision.abs();
-    if (currentPrecision.compareTo(precision) <= -1) {
-      return xn1;
+  private BigDecimal sqrtNewtonRaphson  (BigDecimal n, BigDecimal precision) {
+    BigDecimal x = new BigDecimal("1");
+    BigDecimal xn = x.add(n.divide(x , SQRT_DIG.intValue(), BigDecimal.ROUND_HALF_UP))
+            .divide(BIG_DECIMAL_FOR_DIVISION , SQRT_DIG.intValue(), BigDecimal.ROUND_HALF_UP);
+    while(x.add(xn.negate()).abs().compareTo(precision) != BIG_DECIMAL_COMPARE_VALUE_FOR_LESS) {
+      x = xn;
+      xn = x.add(n.divide(x, SQRT_DIG.intValue(), BigDecimal.ROUND_HALF_UP))
+              .divide(BIG_DECIMAL_FOR_DIVISION, SQRT_DIG.intValue(), BigDecimal.ROUND_HALF_UP);
     }
-    return sqrtNewtonRaphson(c, xn1, precision);
+    return x;
   }
 }
