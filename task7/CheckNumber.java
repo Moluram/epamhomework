@@ -18,24 +18,16 @@ public class CheckNumber {
     String line = new Scanner(System.in).nextLine().replace(","," ");
     CheckLine checkLine = new CheckLine();
     if (checkLine.forContainMoreThan5Words(line)) {
-      print("Contains more than 5 words");
+      System.out.println("Contains more than 5 words");
     }
     if (checkLine.forContainOnlyDigits(line)) {
-      print("Contain only digits");
+      System.out.println("Contain only digits");
     }
     if (checkLine.forContainWordFromDictionary(line)) {
-      print("Contain word from dictionary");
+      System.out.println("Contain word from dictionary");
     }
     if (checkLine.forDoNotContainDigits(line)) {
-      print("Do not contain digits");
+      System.out.println("Do not contain digits");
     }
-  }
-
-  /**
-   * Prints to the console value
-   * @param value - printed value
-   */
-  private static void print(String value) {
-    System.out.println(value);
   }
 }
