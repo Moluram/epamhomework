@@ -8,30 +8,30 @@ import java.util.List;
  * @author Moluram
  * @version 1.0
  */
-public class CheckLine <T>{
+public class CheckLine {
   /**
    * List of used checkers
    */
   private List<Checker> listOfCheckers = new ArrayList<>();
 
-  public CheckLine(){
+  public CheckLine() {
     createListOfCheckers();
   }
 
   /**
-   * Run all the test on given parameter, but before it casting to String
+   * Run all the test on given parameter
    * @param param - given parameter
    */
-  public void checkLineOnVariousTests(T param){
+  public void checkLineOnVariousTests(String param) {
     for (Checker checker: listOfCheckers) {
-      checker.check(param.toString());
+      checker.check(param);
     }
   }
 
   /**
    * Creates list of existing checkers
    */
-  private void createListOfCheckers(){
+  private void createListOfCheckers() {
     listOfCheckers.add(new ContainOnlyOneWordOfMaxLength());
     listOfCheckers.add(new ContainWordPalindrome());
     listOfCheckers.add(new ContainWordFromDictionary());

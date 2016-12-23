@@ -5,7 +5,7 @@ package com.moluram.task7.checker;
  * @author Moluram
  * @version 1.0
  */
-class ContainWordPalindrome implements Checker{
+class ContainWordPalindrome implements Checker {
   /**
    * Checks whether the given string contain palindrome word
    * Prints the answer

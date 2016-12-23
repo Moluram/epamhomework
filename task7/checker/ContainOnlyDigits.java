@@ -17,9 +17,9 @@ class ContainOnlyDigits implements Checker {
     String pattern = "[^0-9]";
     Pattern p = Pattern.compile(pattern);
     Matcher m = p.matcher(line);
-    if(!m.find()){
+    if (!m.find()) {
       System.out.println("Contain only digits");
-    }else {
+    } else {
       System.out.println("Do not contain only digits");
     }
   }

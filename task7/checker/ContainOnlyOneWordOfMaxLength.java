@@ -28,7 +28,7 @@ class ContainOnlyOneWordOfMaxLength implements Checker {
    * @param words - array of words
    * @return int - maxLength
    */
-  private int findMaxLength(String[] words){
+  private int findMaxLength(String[] words) {
     int maxLength = 0;
     for (String word : words) {
       if (word.length() > maxLength) {
@@ -44,7 +44,7 @@ class ContainOnlyOneWordOfMaxLength implements Checker {
    * @param maxLength - max length of the words from "words" array
    * @return int - count of words with max length
    */
-  private int findCountOfWordWithMaxLength(String[] words, int maxLength){
+  private int findCountOfWordWithMaxLength(String[] words, int maxLength) {
     int counter = 0;
     for (String word : words) {
       if (word.length() == maxLength) {

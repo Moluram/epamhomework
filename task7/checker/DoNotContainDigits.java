@@ -18,7 +18,7 @@ class DoNotContainDigits implements Checker {
     String pattern = "[0-9]";
     Pattern p = Pattern.compile(pattern);
     Matcher m = p.matcher(line.replace(" ",""));
-    if(!m.find()){
+    if (!m.find()) {
       System.out.println("Do not contain digits");
     } else {
       System.out.println("Contain digits");

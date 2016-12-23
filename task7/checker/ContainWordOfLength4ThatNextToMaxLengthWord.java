@@ -5,7 +5,7 @@ package com.moluram.task7.checker;
  * @author Moluram
  * @version 1.0
  */
-public class ContainWordOfLength4ThatNextToMaxLengthWord implements Checker{
+public class ContainWordOfLength4ThatNextToMaxLengthWord implements Checker {
   private static final int TARGET_LENGTH = 4;
 
   /**
