@@ -10,14 +10,17 @@ import java.util.regex.*;
 class ContainOnlyDigits implements Checker {
   /**
    * Checks whether the given string consists only of digits
-   * Return answer
+   * Prints the answer
    * @param line - line for testing
-   * @return boolean
    */
-  public boolean check(String line) {
+  public void check(String line) {
     String pattern = "[^0-9]";
     Pattern p = Pattern.compile(pattern);
-    Matcher m = p.matcher(line.replace(" ", ""));
-    return !m.find();
+    Matcher m = p.matcher(line);
+    if(!m.find()){
+      System.out.println("Contain only digits");
+    }else {
+      System.out.println("Do not contain only digits");
+    }
   }
 }

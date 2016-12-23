@@ -9,19 +9,22 @@ package com.moluram.task7.checker;
 class ContainMoreThan5Words implements Checker {
   /**
    * Checks whether the given string contain more than five words
-   * Return answer
+   * Prints the answer
    * @param line - line for check
-   * @return boolean
    */
-  public boolean check(String line) {
+  public void check(String line) {
     String[] words = line.split(" ");
     int counter = 0;
     for (String word: words) {
-        if (word.length()!=0) {
+        if (word.length() != 0) {
           counter++;
       }
     }
-    return counter > 5;
+    if (counter > 5) {
+      System.out.println("Contains more than 5 words");
+    } else {
+      System.out.println("Contains less than 5 words");
+    }
   }
 
 }

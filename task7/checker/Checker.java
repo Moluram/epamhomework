@@ -6,9 +6,8 @@ package com.moluram.task7.checker;
 interface Checker {
   /**
    * Main function for checkers
-   * Return result of check
+   * Prints the result of check
    * @param line - checked line
-   * @return boolean
    */
-  boolean check(String line);
+  void check(String line);
 }

@@ -17,17 +17,6 @@ public class CheckNumber {
   public static void main(String[] args) {
     String line = new Scanner(System.in).nextLine().replace(","," ");
     CheckLine checkLine = new CheckLine();
-    if (checkLine.forContainMoreThan5Words(line)) {
-      System.out.println("Contains more than 5 words");
-    }
-    if (checkLine.forContainOnlyDigits(line)) {
-      System.out.println("Contain only digits");
-    }
-    if (checkLine.forContainWordFromDictionary(line)) {
-      System.out.println("Contain word from dictionary");
-    }
-    if (checkLine.forDoNotContainDigits(line)) {
-      System.out.println("Do not contain digits");
-    }
+    checkLine.checkLineOnVariousTests(line);
   }
 }

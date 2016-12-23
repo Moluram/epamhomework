@@ -11,14 +11,17 @@ import java.util.regex.Pattern;
 class DoNotContainDigits implements Checker {
   /**
    * Checks whether the given line contain digits
-   * Return result of check
+   * Prints the answer
    * @param line - checked line
-   * @return boolean
    */
-  public boolean check(String line) {
+  public void check(String line) {
     String pattern = "[0-9]";
     Pattern p = Pattern.compile(pattern);
     Matcher m = p.matcher(line.replace(" ",""));
-    return !m.find();
+    if(!m.find()){
+      System.out.println("Do not contain digits");
+    } else {
+      System.out.println("Contain digits");
+    }
   }
 }
