@@ -1,7 +1,5 @@
 package com.moluram.task7;
 
-import com.moluram.task7.checker.CheckLine;
-
 import java.util.Scanner;
 
 /**

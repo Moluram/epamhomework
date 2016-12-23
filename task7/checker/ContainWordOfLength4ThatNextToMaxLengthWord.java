@@ -15,19 +15,15 @@ public class ContainWordOfLength4ThatNextToMaxLengthWord implements Checker {
 
   /**
    * Checks whether the given string contain only one word of max length
-   * Prints the answer
    * @param line - line for testing
+   * @return boolean - answer of the check
    */
-  public void check(String line) {
+  public boolean check(String line) throws NotEnoughWordsException {
     String[] words = line.split(" ");
     if (words.length < 2) {
-      return;
+      throw new NotEnoughWordsException();
     }
-    if (!isContainWordOfLength4ThatNextToMaxLengthWord(words, findMaxLength(words))) {
-      System.out.println("Does not contain word of length 4 that next to max length word");
-    } else {
-      System.out.println("Contain word of length 4 that next to max length word");
-    }
+    return isContainWordOfLength4ThatNextToMaxLengthWord(words, findMaxLength(words));
   }
 
   /**

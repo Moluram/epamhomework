@@ -5,22 +5,18 @@ package com.moluram.task7.checker;
  * @author Moluram
  * @version 1.0
  */
-class ContainOnlyOneWordOfMaxLength implements Checker {
+public class ContainOnlyOneWordOfMaxLength implements Checker {
   /**
    * Checks whether the given string contain only one word of max length
-   * Prints the answer
    * @param line - line for testing
+   * @return boolean - answer of the check
    */
-  public void check(String line) {
+  public boolean check(String line) throws NotEnoughWordsException {
     String[] words = line.split(" ");
     if (words.length < 2) {
-      return;
+      throw new NotEnoughWordsException();
     }
-    if (findCountOfWordWithMaxLength(words, findMaxLength(words)) > 1) {
-      System.out.println("Does not contain only one word of max length");
-    } else {
-      System.out.println("Contain only one word of max length");
-    }
+    return !(findCountOfWordWithMaxLength(words, findMaxLength(words)) > 1);
   }
 
   /**

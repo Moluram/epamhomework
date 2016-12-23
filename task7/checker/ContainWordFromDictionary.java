@@ -13,7 +13,7 @@ import java.util.List;
  * @author Moluram
  * @version 1.0
  */
-class ContainWordFromDictionary implements Checker {
+public class ContainWordFromDictionary implements Checker {
   /**
    * Contain all dictionary words
    */
@@ -22,7 +22,7 @@ class ContainWordFromDictionary implements Checker {
   /**
    * Initializes dictionary list from file
    */
-  ContainWordFromDictionary() {
+  public ContainWordFromDictionary() {
     String inputFile = "src/com/moluram/task7/dictionary.txt";
     File fileI = new File(inputFile);
     try {
@@ -40,18 +40,17 @@ class ContainWordFromDictionary implements Checker {
 
   /**
    * Checks whether the given line contain word from dictionary
-   * Prints the answer
    * @param line - checked line
+   * @return boolean - answer of the check
    */
-  public void check(String line) {
+  public boolean check(String line) {
     String[] words = line.split(" ");
     for (String word: words) {
         if (word.length() != 0 && checkWordInDictionary(word)) {
-          System.out.println("Contain word from dictionary");
-          return;
+          return true;
         }
     }
-    System.out.println("Do not contain word from dictionary");
+    return false;
   }
 
   /**
