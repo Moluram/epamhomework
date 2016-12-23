@@ -1,7 +1,7 @@
 package com.moluram.task7.checker;
 
 /**
- * Created by Moluram on 23.12.2016.
+ * Throws when there are not enough words for test
  */
 public class NotEnoughWordsException extends Exception {
 }
