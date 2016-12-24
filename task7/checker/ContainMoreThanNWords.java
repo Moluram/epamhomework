@@ -10,9 +10,9 @@ public class ContainMoreThanNWords implements Checker {
   /**
    * Number of words
    */
-  private int N;
+  private int N = 0;
 
-  public ContainMoreThanNWords(int N){
+  public ContainMoreThanNWords(int N) {
     this.N = N;
   }
 
@@ -22,7 +22,7 @@ public class ContainMoreThanNWords implements Checker {
    * @return boolean - answer of the check
    */
   public boolean check(String line) {
-    String[] words = line.split(" ");
+    String[] words = line.split(",| ");
     int counter = 0;
     for (String word: words) {
         if (word.length() != 0) {

@@ -12,7 +12,7 @@ public class ContainOnlyOneWordOfMaxLength implements Checker {
    * @return boolean - answer of the check
    */
   public boolean check(String line) throws NotEnoughWordsException {
-    String[] words = line.split(" ");
+    String[] words = line.split(",| ");
     if (words.length < 2) {
       throw new NotEnoughWordsException();
     }

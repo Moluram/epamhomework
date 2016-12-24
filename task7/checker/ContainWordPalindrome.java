@@ -12,7 +12,7 @@ public class ContainWordPalindrome implements Checker {
    * @return boolean - answer of the check
    */
   public boolean check(String line) {
-    for (String word: line.split(" ")) {
+    for (String word: line.split(",| ")) {
       if (word.length() > 0 && new StringBuilder(word).reverse().toString().equals(word)) {
         return true;
       }

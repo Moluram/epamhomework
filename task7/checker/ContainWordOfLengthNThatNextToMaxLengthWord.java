@@ -5,8 +5,11 @@ package com.moluram.task7.checker;
  * @author Moluram
  * @version 1.0
  */
-public class ContainWordOfLength4ThatNextToMaxLengthWord implements Checker {
-  private static final int TARGET_LENGTH = 4;
+public class ContainWordOfLengthNThatNextToMaxLengthWord implements Checker {
+  /**
+   * Number N for test
+   */
+  private int N = 0;
 
   /**
    * Small shift for not to go beyond the bounds of the array
@@ -19,11 +22,15 @@ public class ContainWordOfLength4ThatNextToMaxLengthWord implements Checker {
    * @return boolean - answer of the check
    */
   public boolean check(String line) throws NotEnoughWordsException {
-    String[] words = line.split(" ");
+    String[] words = line.split(",| ");
     if (words.length < 2) {
       throw new NotEnoughWordsException();
     }
-    return isContainWordOfLength4ThatNextToMaxLengthWord(words, findMaxLength(words));
+    return isContainWordOfLengthNThatNextToMaxLengthWord(words, findMaxLength(words));
+  }
+
+  public ContainWordOfLengthNThatNextToMaxLengthWord(int N) {
+    this.N = N;
   }
 
   /**
@@ -48,9 +55,9 @@ public class ContainWordOfLength4ThatNextToMaxLengthWord implements Checker {
    * @param maxLength - max length of the words from "words" array
    * @return boolean - answer to the question
    */
-  private boolean isContainWordOfLength4ThatNextToMaxLengthWord(String[] words, int maxLength) {
+  private boolean isContainWordOfLengthNThatNextToMaxLengthWord(String[] words, int maxLength) {
     for (int i = 0; i < words.length - SMALL_SHIFT; i++) {
-      if (words[i].length() == maxLength && words[i+1].length() == TARGET_LENGTH) {
+      if (words[i].length() == maxLength && words[i+1].length() == N) {
         return true;
       }
     }

@@ -15,9 +15,14 @@ import java.util.Properties;
  */
 public class CheckLine {
   /**
+   * Value for ContainWordOfLengthNThatNextToMaxLengthWord
+   */
+  static private final int VALUE_N_FOR_TEST_CONTAIN_WORD_OF_LENGTH_N = 4;
+
+  /**
    * Value for ContainMoreThanNWords
    */
-  static private final int VALUE_FOR_TEST = 5;
+  static private final int VALUE_N_FOR_TEST_CONTAIN_MORE_THAN_N_WORDS = 5;
 
   private Properties property = new Properties();
 
@@ -33,7 +38,7 @@ public class CheckLine {
       fis = new FileInputStream("src/com/moluram/task7/outputStrings.properties");
       property.load(fis);
     } catch (IOException e) {
-      System.err.println("ОШИБКА: Файл свойств отсуствует!");
+      System.err.println("Error: File doesn't found!");
     }
   }
 
@@ -59,9 +64,11 @@ public class CheckLine {
     listOfCheckers.add(new ContainOnlyOneWordOfMaxLength());
     listOfCheckers.add(new ContainWordPalindrome());
     listOfCheckers.add(new ContainWordFromDictionary());
-    listOfCheckers.add(new ContainWordOfLength4ThatNextToMaxLengthWord());
+    listOfCheckers.add(new ContainWordOfLengthNThatNextToMaxLengthWord(
+            VALUE_N_FOR_TEST_CONTAIN_WORD_OF_LENGTH_N));
     listOfCheckers.add(new ContainOnlyDigits());
-    listOfCheckers.add(new ContainMoreThanNWords(VALUE_FOR_TEST));
+    listOfCheckers.add(new ContainMoreThanNWords(
+            VALUE_N_FOR_TEST_CONTAIN_MORE_THAN_N_WORDS));
     listOfCheckers.add(new DoNotContainDigits());
   }
 }

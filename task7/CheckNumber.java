@@ -13,7 +13,7 @@ public class CheckNumber {
    * @param args - arguments from command line
    */
   public static void main(String[] args) {
-    String line = new Scanner(System.in).nextLine().replace(","," ");
+    String line = new Scanner(System.in).nextLine();
     CheckLine checkLine = new CheckLine();
     checkLine.checkLineOnVariousTests(line);
   }

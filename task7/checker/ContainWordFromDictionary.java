@@ -44,7 +44,7 @@ public class ContainWordFromDictionary implements Checker {
    * @return boolean - answer of the check
    */
   public boolean check(String line) {
-    String[] words = line.split(" ");
+    String[] words = line.split(",| ");
     for (String word: words) {
         if (word.length() != 0 && checkWordInDictionary(word)) {
           return true;
