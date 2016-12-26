@@ -10,10 +10,10 @@ public class ContainMoreThanNWords implements Checker {
   /**
    * Number of words
    */
-  private int N = 0;
+  private int n = 0;
 
   public ContainMoreThanNWords(int N) {
-    this.N = N;
+    this.n = N;
   }
 
   /**
@@ -29,7 +29,7 @@ public class ContainMoreThanNWords implements Checker {
           counter++;
       }
     }
-    return counter > N;
+    return counter > n;
   }
 
 }

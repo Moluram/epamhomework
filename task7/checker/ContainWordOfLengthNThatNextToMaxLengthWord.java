@@ -9,7 +9,7 @@ public class ContainWordOfLengthNThatNextToMaxLengthWord implements Checker {
   /**
    * Number N for test
    */
-  private int N = 0;
+  private int n = 0;
 
   /**
    * Small shift for not to go beyond the bounds of the array
@@ -30,7 +30,7 @@ public class ContainWordOfLengthNThatNextToMaxLengthWord implements Checker {
   }
 
   public ContainWordOfLengthNThatNextToMaxLengthWord(int N) {
-    this.N = N;
+    this.n = N;
   }
 
   /**
@@ -50,14 +50,14 @@ public class ContainWordOfLengthNThatNextToMaxLengthWord implements Checker {
 
   /**
    * Finds answer  for the question:
-   * Is that array contain word of length 4 that nex to max length word
+   * Is that array contain word of length N that nex to max length word
    * @param words - array of words
    * @param maxLength - max length of the words from "words" array
    * @return boolean - answer to the question
    */
   private boolean isContainWordOfLengthNThatNextToMaxLengthWord(String[] words, int maxLength) {
     for (int i = 0; i < words.length - SMALL_SHIFT; i++) {
-      if (words[i].length() == maxLength && words[i+1].length() == N) {
+      if (words[i].length() == maxLength && words[i+1].length() == n) {
         return true;
       }
     }
