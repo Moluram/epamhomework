@@ -1,23 +1,33 @@
 package com.moluram.task8;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
 
 /**
- * Created by Moluram on 22.12.2016.
+ * Class represent a product for application
  */
 public class Product {
   private String type;
   private String name;
-  private BigInteger amount;
-  private BigInteger costPerUnit;
+  private BigDecimal amount;
+  private BigDecimal costPerUnit;
 
-  public Product(String type, String name, String amount, String costPerUnit) {
+  /**
+   * Minimal constructor for class Product. Accepts all needed parameters for the Product object
+   * @param type - type of the product
+   * @param name - name of the product
+   * @param amount - amount of the products
+   * @param costPerUnit - cost per unit for product
+   */
+  public Product(String type, String name, BigDecimal amount, BigDecimal costPerUnit) {
     this.type = type;
     this.name = name;
-    this.amount = new BigInteger(amount);
-    this.costPerUnit = new BigInteger(costPerUnit);
+    this.amount = amount;
+    this.costPerUnit = costPerUnit;
   }
 
+  /**
+   * Getters and setters
+   */
   public String getType() {
     return type;
   }
@@ -34,19 +44,19 @@ public class Product {
     this.name = name;
   }
 
-  public BigInteger getAmount() {
+  public BigDecimal getAmount() {
     return amount;
   }
 
-  public void setAmount(BigInteger amount) {
+  public void setAmount(BigDecimal amount) {
     this.amount = amount;
   }
 
-  public BigInteger getCostPerUnit() {
+  public BigDecimal getCostPerUnit() {
     return costPerUnit;
   }
 
-  public void setCostPerUnit(BigInteger costPerUnit) {
+  public void setCostPerUnit(BigDecimal costPerUnit) {
     this.costPerUnit = costPerUnit;
   }
 }

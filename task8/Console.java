@@ -1,86 +1,50 @@
 package com.moluram.task8;
 
+import com.moluram.task8.cases.Case;
+
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
- * Created by Moluram on 22.12.2016.
+ * Class serve for answer the questions of the user representing in the enter
  */
 public class Console {
-  private List<Product> listOfProducts = new ArrayList<>();
+  private static final String REGEX_VALUE_FOR_SPLIT = " ";
+  private static final String CASE_EXIT = "exit";
+  private static final int FIRST_WORD = 0;
+  private List<Case> listOfCases;
 
+  /**
+   * Constructor which except list of using cases for this object
+   * @param listOfCases - list of cases
+   */
+  public Console(List<Case> listOfCases){
+    this.listOfCases = listOfCases;
+  }
+
+  /**
+   * Main function. Start the work of the object.
+   * Takes users input and send it to different cases
+   */
   void start() {
-    String[] line = {""};
-    while (!line[0].equals("exit")) {
-      switch (line[0]) {
-        case "add":
-          listOfProducts.add(new Product(line[1], line[2], line[3], line[4]));
+    printsExistingCases();
+    Scanner in = new Scanner(System.in);
+    String[] line = new Scanner(System.in).nextLine().split(REGEX_VALUE_FOR_SPLIT);
+    while (!line[FIRST_WORD].equals(CASE_EXIT)) {
+      for (Case cases: listOfCases) {
+        if (cases.isFits(line)) {
+          System.out.println(cases.execute(line));
           break;
-
-        case "count":
-          switch (line[1]) {
-            case "types":
-              printCountOfTypes();
-              break;
-
-            case "all":
-              printCountOfAllProducts();
-              break;
-          }
-          break;
-
-        case "average":
-          if (line[1].equals("price")) {
-            if(line.length>=3){
-              printAveragePriceOfType(line[3]);
-            }else {
-              printAveragePriceOfProducts();
-            }
-          }
-          break;
-
-        default:
-          line = new Scanner(System.in).nextLine().split(" ");
+        }
       }
+      line = in.nextLine().split(REGEX_VALUE_FOR_SPLIT);
     }
   }
 
-  private void printCountOfTypes() {
-    List<String> listOfTypes = new LinkedList<>();
-    listOfProducts.stream().filter(product -> !listOfTypes.contains(product.getType()))
-            .forEach(product -> {
-      listOfTypes.add(product.getType());
-    });
-    System.out.println("Count of types: " + listOfTypes.size());
-  }
-
-  private void printCountOfAllProducts() {
-    System.out.println("Count of all products: " + listOfProducts.size());
-  }
-
-  private void printAveragePriceOfType(String type) {
-    BigDecimal averageValue = new BigDecimal("0");
-    int counter = 0;
-    for (Product product : listOfProducts) {
-      if (product.getType().equals(type)){
-        averageValue = averageValue.add(new BigDecimal(product.getCostPerUnit()));
-        counter++;
-      }
+  private void printsExistingCases() {
+    for (Case cases: listOfCases) {
+      System.out.println(cases.availableVariants());
     }
-    System.out.println(
-            averageValue.divide(new BigDecimal(counter), 150, BigDecimal.ROUND_HALF_UP));
-  }
-
-  private void printAveragePriceOfProducts() {
-    BigDecimal averageValue = new BigDecimal("0");
-    int counter = 0;
-    for (Product product : listOfProducts) {
-      averageValue = averageValue.add(new BigDecimal(product.getCostPerUnit()));
-      counter++;
-    }
-    System.out.println(
-            averageValue.divide(new BigDecimal(counter), 150, BigDecimal.ROUND_HALF_UP));
+    System.out.println(CASE_EXIT);
   }
 }
