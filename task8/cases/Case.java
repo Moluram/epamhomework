@@ -1,7 +1,7 @@
 package com.moluram.task8.cases;
 
 /**
- * Created by Moluram on 01.01.2017.
+ * Representing interface for case
  */
 public interface Case {
   /**
@@ -18,5 +18,9 @@ public interface Case {
    */
   String execute(String[] line);
 
+  /**
+   * Return available variants of using this case
+   * @return - line to output
+   */
   String availableVariants();
 }

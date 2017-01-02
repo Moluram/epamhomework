@@ -3,7 +3,7 @@ package com.moluram.task8.cases;
 import com.moluram.task8.App;
 
 /**
- * Created by Moluram on 01.01.2017.
+ *  Class represent case in which user wants to add products in database
  */
 public class CaseAdd implements Case{
   private static final String LINE_CASE_ADD = "add";
