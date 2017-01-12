@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Moluram on 05.01.2017.
+ * Class execute implementation of the program.
  */
 public class Main {
   private static final Long AUTOMOBILE_NUMBER_OF_SEATS = 4L;
@@ -30,6 +30,10 @@ public class Main {
   private static final String NAME_OF_DICTIONARY_FILE = "checkpoints.txt";
   private static final String NAME_OF_FILE_WHERE_TO_PRINT = "result.html";
 
+  /**
+   * Runs tests and print them in html form to the file
+   * @param args - arguments from the command line
+   */
   public static void main(String[] args) {
     Route routeForTest = new Route(NAME_OF_DICTIONARY_FILE);
     TransportTest transportTest = new TransportTest(routeForTest);
@@ -39,6 +43,10 @@ public class Main {
     printer.printInFile(htmlParser.getResultsInHtmlTableForm(transportTest.getResults()), NAME_OF_FILE_WHERE_TO_PRINT);
   }
 
+  /**
+   * Creates a list of Transport objects
+   * @return - List<Transport>
+   */
   private static List<Transport> getListOfTestingTransports() {
     List<Transport> list = new ArrayList<>();
     list.add(new Automobile(AUTOMOBILE_VELOCITY, AUTOMOBILE_CONSUMPTION, AUTOMOBILE_NUMBER_OF_SEATS));

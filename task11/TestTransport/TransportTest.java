@@ -11,7 +11,6 @@ import java.util.List;
  * Created by Moluram on 05.01.2017.
  */
 public class TransportTest {
-  private static final String DEFAULT_VALUE_FOR_BIG_DECIMAL = "0";
   private final List<Result> listOfResults = new ArrayList<>();
   /**
    * Round scale.
