@@ -34,11 +34,13 @@ public class TransportTest {
   public void startTestOnTransports (List<Transport> transportList) {
     BigDecimal time;
     BigDecimal cost;
-    for (Transport transport: transportList) {
-      time = routeForTest.getRouteLength().divide(new BigDecimal(
-                transport.getVelocity()), ROUND_SCALE, RoundingMode.HALF_UP);
-      cost = time.multiply(new BigDecimal(transport.getConsumption()));
-      listOfResults.add(new Result(transport.getClass(), time, cost));
+    if (transportList != null) {
+      for (Transport transport: transportList) {
+        time = routeForTest.getRouteLength().divide(new BigDecimal(
+                  transport.getVelocity()), ROUND_SCALE, RoundingMode.HALF_UP);
+        cost = time.multiply(new BigDecimal(transport.getConsumption()));
+        listOfResults.add(new Result(transport.getClass(), time, cost));
+      }
     }
   }
 

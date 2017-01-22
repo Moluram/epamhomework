@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,16 +13,15 @@ import java.util.List;
  * Class represents a route for transport
  */
 public class Route {
-  private static final int FIRST_ELEMENT = 1;
+  private static final int FIRST_ELEMENT = 0;
   private static final String BIG_DECIMAL_DEFAULT_VALUE = "0";
-  private static final String EXCEPTION_DICTIONARY_FILE_DIDNT_FOUND = "Dictionary file didn't found";
   private static final String REGEX_VALUE_FOR_SPLIT = " ";
   private static final String EMPTY_STRING = "";
 
   /**
    * List of checkpoints
    */
-  private List<Point> pointList = new LinkedList<>();
+  private List<Point> pointList = new ArrayList<>();
 
   /**
    * Route length
@@ -32,9 +32,12 @@ public class Route {
   /**
    * Constructor which takes name of file where to get route
    * @param fileName - name of route file
+   * @throws DictionaryFileDidntFoundException - whether the file didn't exists
    */
-  public Route(String fileName) {
+  public Route(String fileName)
+      throws DictionaryFileDidntFoundException, DictionaryContainNonOnlyDigits, SimilarStartAndEndException {
     getRouteLengthFromFile(fileName);
+    setRouteLength();
   }
 
   public BigDecimal getRouteLength() {
@@ -44,8 +47,10 @@ public class Route {
   /**
    * Gets checkpoints from a file
    * @param fileName - name of a file
+   * @throws DictionaryFileDidntFoundException - whether the file didn't exists
    */
-  private void getRouteLengthFromFile(String fileName) {
+  private void getRouteLengthFromFile(String fileName)
+      throws DictionaryFileDidntFoundException, DictionaryContainNonOnlyDigits, SimilarStartAndEndException {
     File fileI = new File(fileName);
     try {
       try (BufferedReader in = new BufferedReader(new FileReader(fileI.getAbsoluteFile()))) {
@@ -67,10 +72,14 @@ public class Route {
             }
           }
         }
-        setRouteLength();
       }
-    } catch(IOException e) {
-      System.out.println(EXCEPTION_DICTIONARY_FILE_DIDNT_FOUND);
+      if (pointList.get(FIRST_ELEMENT).equals(pointList.get(pointList.size() - 1))) {
+        throw new SimilarStartAndEndException();
+      }
+    } catch (IOException e) {
+      throw new DictionaryFileDidntFoundException();
+    } catch (NumberFormatException e) {
+      throw new DictionaryContainNonOnlyDigits();
     }
   }
 
@@ -94,5 +103,21 @@ public class Route {
    */
   private double getDistanceBetweenPoints(Point pointOne, Point pointTwo) {
     return Math.sqrt(Math.pow(pointTwo.X() - pointOne.X(), 2) + Math.pow(pointTwo.Y() - pointOne.Y(), 2));
+  }
+
+  /**
+   * Throws whether the file didn't exists
+   */
+  public class DictionaryFileDidntFoundException extends IOException {}
+
+  /**
+   * Throws whether the dictionary contain non only digits
+   */
+  public class DictionaryContainNonOnlyDigits extends NumberFormatException { }
+
+  /**
+   * Throws whether the start and end of the route similar
+   */
+  public class SimilarStartAndEndException extends Throwable {
   }
 }

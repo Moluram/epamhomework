@@ -30,17 +30,29 @@ public class Main {
   private static final String NAME_OF_DICTIONARY_FILE = "checkpoints.txt";
   private static final String NAME_OF_FILE_WHERE_TO_PRINT = "result.html";
 
+  private static final String EXCEPTION_DICTIONARY_FILE_DIDNT_FOUND = "Dictionary file didn't found";
+  private static final String EXCEPTION_DICTIONARY_CONTAIN_NON_ONLY_DIGITS = "Dictionary contain non only digits!";
+  private static final String EXCEPTION_SIMILAR_START_AND_END = "Start and end can't be similar!";
+
   /**
    * Runs tests and print them in html form to the file
    * @param args - arguments from the command line
    */
   public static void main(String[] args) {
-    Route routeForTest = new Route(NAME_OF_DICTIONARY_FILE);
-    TransportTest transportTest = new TransportTest(routeForTest);
-    transportTest.startTestOnTransports(getListOfTestingTransports());
-    HtmlParser htmlParser = new HtmlParser();
-    Printer printer = new Printer();
-    printer.printInFile(htmlParser.getResultsInHtmlTableForm(transportTest.getResults()), NAME_OF_FILE_WHERE_TO_PRINT);
+    try {
+      Route routeForTest = new Route(NAME_OF_DICTIONARY_FILE);
+      TransportTest transportTest = new TransportTest(routeForTest);
+      transportTest.startTestOnTransports(getListOfTestingTransports());
+      HtmlParser htmlParser = new HtmlParser();
+      Printer printer = new Printer();
+      printer.printInFile(htmlParser.getResultsInHtmlTableForm(transportTest.getResults()), NAME_OF_FILE_WHERE_TO_PRINT);
+    } catch (Route.DictionaryFileDidntFoundException e) {
+      System.out.println(EXCEPTION_DICTIONARY_FILE_DIDNT_FOUND);
+    } catch (Route.DictionaryContainNonOnlyDigits e) {
+      System.out.println(EXCEPTION_DICTIONARY_CONTAIN_NON_ONLY_DIGITS);
+    } catch (Route.SimilarStartAndEndException e) {
+      System.out.println(EXCEPTION_SIMILAR_START_AND_END);
+    }
   }
 
   /**
