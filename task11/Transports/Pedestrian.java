@@ -1,7 +1,7 @@
 package com.moluram.task11.Transports;
 
 /**
- * Created by Moluram on 05.01.2017.
+ * Represent a pedestrian
  */
 public class Pedestrian extends Transport {
   public Pedestrian(Long velocity, double consumption) {

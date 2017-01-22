@@ -1,10 +1,17 @@
 package com.moluram.task11.Transports;
 
 /**
- * Created by Moluram on 05.01.2017.
+ * Abstract class for all vehicles
  */
 public abstract class Transport {
+  /**
+   * Transport velocity
+   */
   private Long velocity;
+
+  /**
+   * Transport consumption
+   */
   private double consumption;
 
   Transport(Long velocity, double consumption) {
@@ -12,6 +19,9 @@ public abstract class Transport {
     this.consumption = consumption;
   }
 
+  /**
+   * Getters and setters
+   */
   public Long getVelocity() {
     return velocity;
   }

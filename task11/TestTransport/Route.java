@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Class represent a route for transport
+ * Class represents a route for transport
  */
 public class Route {
   private static final int FIRST_ELEMENT = 1;

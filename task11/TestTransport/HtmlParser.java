@@ -4,7 +4,7 @@ import java.math.RoundingMode;
 import java.util.List;
 
 /**
- * Class serve to parse given string in html format
+ * Class serves to parse given string in html format
  */
 public class HtmlParser {
   private static final String HTML_START_OF_PAGE =

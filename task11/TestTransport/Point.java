@@ -1,7 +1,7 @@
 package com.moluram.task11.TestTransport;
 
 /**
- * Represent a two-dimensional point
+ * Represents a two-dimensional point
  */
 class Point {
   private Long X;
@@ -12,6 +12,10 @@ class Point {
     Y = y;
   }
 
+  /**
+   * Getters for X and Y
+   * @return Long value
+   */
   Long X() {
     return X;
   }

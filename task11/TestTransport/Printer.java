@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Export string value
+ * Exports string value
  */
 public class Printer {
   /**
